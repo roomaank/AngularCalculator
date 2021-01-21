@@ -1,6 +1,7 @@
-h1,
-h3 {
-  margin: 0;
+%items-position {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .container {
@@ -50,11 +51,7 @@ h3 {
 .main-left--top {
   height: 25%;
   width: 100%;
-  //
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  //
+  @extend %items-position;
 }
 
 .count-block {
@@ -83,34 +80,25 @@ h3 {
   outline: none;
   cursor: pointer;
   box-shadow: 0 6px 6px rgba(10, 16, 20, .15), 0 0 205px rgba(10, 16, 20, .12);
-}
-
-.button:active{
-    transform: translateY(1px);
-    background-color: #61c6f2;
-    color: white;
+    &:active{
+      transform: translateY(1px);
+      background-color: #61c6f2;
+      color: white;
+    }
 }
 
 .main-left--digits {
   height: 75%;
   width: 100%;
   flex-wrap: wrap;
-  // 
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  // 
+  @extend %items-position;
 }
 
 .calc-main--right {
   height: 100%;
   width: 25%;
   flex-wrap: wrap;
-  // 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // 
+  @extend %items-position;
 }
 
 .calc-main--right button {

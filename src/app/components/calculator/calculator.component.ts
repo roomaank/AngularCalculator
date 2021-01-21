@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DIGITS } from './calculator.constants';
+import { DIGITS, OPERATIONS } from './calculator.constants';
 
 @Component({
   selector: 'app-calculator',
@@ -9,15 +9,17 @@ import { DIGITS } from './calculator.constants';
 export class CalculatorComponent implements OnInit {
 
   digits = DIGITS;
+  operations = OPERATIONS;
+  countArea;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  clickDigit(e){
-    console.log(e.target.innerText);
-    
+  clickDigit(digit) {
+    console.log(digit);
+    this.countArea = digit;
   }
 
 }
