@@ -5,18 +5,18 @@
         <div class="count-block">{{countArea}}</div>
       </div>
       <div class="calc-header--main">
-        <div class="result-block">1,024</div>
+        <div class="result-block">{{resultArea}}</div>
       </div>
     </div>
     <div class="calc-main">
       <div class="calc-main--left">
         <div class="main-left--top">
-          <button class="button">C</button>
+          <button class="button" (click)="clearAll()">C</button>
           <button class="button">+/-</button>
           <button class="button">%</button>
         </div>
         <div class="main-left--digits">
-          <button class="button" *ngFor="let digit of digits" (click)="clickDigit(digit)">{{digit}}</button>
+          <button class="button" *ngFor="let digit of digits" (click)="clickButton(digit)">{{digit}}</button>
         </div>
       </div>
       <div class="calc-main--right">
@@ -25,7 +25,7 @@
     </div>
     <div class="calc-bottom">
       <div class="calc-bottom--left">
-        <button class="button" (click)="clickDigit(0)">0</button>
+        <button class="button" (click)="clickButton(0)">0</button>
         <button class="button">.</button>
       </div>
       <div class="calc-bottom--right">

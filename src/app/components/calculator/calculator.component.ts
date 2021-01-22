@@ -10,16 +10,21 @@ export class CalculatorComponent implements OnInit {
 
   digits = DIGITS;
   operations = OPERATIONS;
-  countArea;
+  countArea = 0;
+  resultArea = 0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  clickDigit(digit) {
+  clickButton(digit) {
     console.log(digit);
     this.countArea = digit;
+  }
+
+  clearAll(){
+    this.countArea = 0;
   }
 
 }
