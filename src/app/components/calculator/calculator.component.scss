@@ -31,53 +31,67 @@
     margin-top: 100px;
     background-color: #f2f2f2;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px 5px;
     box-shadow: 0 7px 50px rgba(10, 16, 20, 0.15), 0 0 14px rgba(10, 16, 20, 0.12);
   }
+
   &-header {
     height: 150px;
     overflow: hidden;
   }
-  &-header--top{
+
+  &-header--top {
     height: 40%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
-  &-header--main{
+
+  &-header--main {
     height: 60%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
-  &-main{
+
+  &-main {
     height: 280px;
     display: flex;
   }
-  &-main--left{
+
+  &-main--left {
     height: 100%;
     width: 75%;
   }
-  &-main--right{
+
+  &-main--right {
     height: 100%;
     width: 25%;
     flex-wrap: wrap;
     @extend %items-position;
   }
-  &-main--right button{
+
+  &-main--right button {
     background-color: #61c6f2;
     color: white;
+
+    &:active {
+      background-color: #18b1f3;
+    }
   }
-  &-bottom{
+
+  &-bottom {
     height: 70px;
     display: flex;
   }
-  &-bottom--left{
+
+  &-bottom--left {
     width: 50%;
     height: 100%;
     @extend %items-position
   }
-  &-bottom--right{
+
+  &-bottom--right {
     width: 50%;
     height: 100%;
     display: flex;
@@ -86,13 +100,14 @@
   }
 }
 
-.main{
+.main {
   &-left--top {
     height: 25%;
     width: 100%;
     @extend %items-position;
   }
-  &-left--digits{
+
+  &-left--digits {
     height: 75%;
     width: 100%;
     flex-wrap: wrap;
@@ -111,8 +126,8 @@
   outline: none;
   cursor: pointer;
   box-shadow: 0 6px 6px rgba(10, 16, 20, .15), 0 0 205px rgba(10, 16, 20, .12);
+
   &:active {
-    transform: translateY(1px);
     background-color: #61c6f2;
     color: white;
   }
@@ -123,4 +138,11 @@
   color: white;
   width: 130px;
   border-radius: 30px;
+
+  &:active {
+    background-color: #18b1f3;
+  }
 }
+
+
+
