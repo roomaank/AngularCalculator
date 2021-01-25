@@ -21,13 +21,10 @@
         </div>
       </div>
       <div class="calc-main--right">
-        <button class="button button-operation" *ngFor="let operation of operations" (click)="clickOperation(operation)">{{operation}}</button>
+        <button class="button button-operation" *ngFor="let operator of operators" (click)="clickOperation(operator)">{{operator}}</button>
       </div>
     </div>
     <div class="calc-bottom">
-      <div class="calc-bottom--left">
-        <button class="button">.</button>
-      </div>
       <div class="calc-bottom--right">
         <button class="button btn-equal" (click)="result()">=</button>
       </div>
