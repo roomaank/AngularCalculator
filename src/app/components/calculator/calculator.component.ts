@@ -10,12 +10,13 @@ export class CalculatorComponent implements OnInit {
 
   digits = DIGITS;
   operators = OPERATIONS;
-  countArea = '';
-  resultArea = '';
+
+  calculationPlace = '';
+  resultPlace = '';
   digitFirst: number;
   digitSecond: number;
-  resultConvertedToString = ''
   operator = '';
+
 
   constructor() { }
 
@@ -23,25 +24,45 @@ export class CalculatorComponent implements OnInit {
   }
 
   clickButton(digit) {
-    this.countArea += digit;
+    this.calculationPlace += digit;
   }
 
-  clickOperation(operator){
-    this.countArea += operator;
-    this.operator = operator;
-  }
-
-  result(){
-    if (this.operator === '*'){
-      this.countArea = (this.digitFirst * this.digitSecond).toString()
+  clickOperation(operator) {
+    if (this.calculationPlace === '') {
+      return;
     }
-    console.log(this.countArea);
-    
+    this.digitFirst = parseFloat(this.calculationPlace)
+    this.operator = operator;
+    this.calculationPlace += operator;
   }
 
-  clearAll(){
-    this.countArea = '';
-    this.resultArea = '';
+  result() {
+    //Як зробити щоб зчитувало з клавіатури???
+    this.digitSecond = parseFloat(this.calculationPlace.split(this.operator)[1])
+    console.log(this.digitSecond);
+    console.log(this.calculationPlace);
+
+    if (this.operator === '×') {
+      this.calculationPlace; //Так нормально?Це не правильно поганого тону???
+      this.resultPlace = (this.digitFirst * this.digitSecond).toString();
+    } else if (this.operator === '÷') {
+      this.calculationPlace;
+      this.resultPlace = (this.digitFirst / this.digitSecond).toString();
+    } else if (this.operator === '+') {
+      this.calculationPlace;
+      this.resultPlace = (this.digitFirst + this.digitSecond).toString();
+    } else if (this.operator === '-') {
+      this.calculationPlace;
+      this.resultPlace = (this.digitFirst - this.digitSecond).toString();
+    } else {
+      this.resultPlace = 'Error';
+    }
+
+  }
+
+  clearAll() {
+    this.calculationPlace = '';
+    this.resultPlace = '';
   }
 
 }
