@@ -13,9 +13,10 @@ export class CalculatorComponent implements OnInit {
 
   calculationPlace = '';
   resultPlace = '';
-  digitFirst: number;
+  digitFirst;
   digitSecond: number;
   operator = '';
+  clipboard;
 
 
   constructor() { }
@@ -23,27 +24,35 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickButton(digit) {
+  clickDigit(digit) {
     this.calculationPlace += digit;
+    if (this.calculationPlace.length > 20) {
+      this.calculationPlace = 'Invalid length'
+      return;
+    }
   }
 
-  clickOperation(operator) {
+  clickOperator(operator) {
     if (this.calculationPlace === '') {
       return;
     }
     this.digitFirst = parseFloat(this.calculationPlace)
     this.operator = operator;
     this.calculationPlace += operator;
+
+    if (this.resultPlace) {    
+      const buffer = this.resultPlace;
+      this.calculationPlace = buffer;
+      this.digitFirst = buffer;
+    }
   }
 
   result() {
     //Як зробити щоб зчитувало з клавіатури???
     this.digitSecond = parseFloat(this.calculationPlace.split(this.operator)[1])
     console.log(this.digitSecond);
-    console.log(this.calculationPlace);
-
     if (this.operator === '×') {
-      this.calculationPlace; //Так нормально?Це не правильно поганого тону???
+      this.calculationPlace;            //Так нормально?Це не правильно поганого тону???
       this.resultPlace = (this.digitFirst * this.digitSecond).toString();
     } else if (this.operator === '÷') {
       this.calculationPlace;
