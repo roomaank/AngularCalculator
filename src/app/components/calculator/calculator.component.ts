@@ -93,6 +93,19 @@ export class CalculatorComponent implements OnInit {
     this.activateHistory = false;
   }
 
+  subtractSignBeforeDigit(){
+    this.digitFirst = parseFloat(this.calculationPlace)
+    const subtractDigit = this.digitFirst * (-1);
+    this.calculationPlace = ''
+    this.resultPlace = subtractDigit.toString()            
+  }
+
+  percentOfNumber(){
+    this.digitFirst = parseFloat(this.calculationPlace)
+    const percentDigit = this.digitFirst / 100;
+    this.resultPlace = percentDigit.toString();    
+  }
+
   navigateTo() {
     this.router.navigate(['history'])
   }

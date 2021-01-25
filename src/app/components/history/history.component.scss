@@ -1,15 +1,35 @@
-%flex-position{
+%flex-position {
   display: flex;
   align-items: center;
 }
 
-%font{
+%font {
   font-family: 'Roboto', sans-serif;
 }
 
 .container {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
+}
+
+.redirect {
+  &-button--wrapper {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-button {
+    height: 40px;
+    width: 150px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+
+    box-shadow: 0 6px 6px rgba(10, 16, 20, 0.15), 0 0 205px rgba(10, 16, 20, 0.12);
+  }
 }
 
 .history {
@@ -35,8 +55,8 @@
 
   &-calculate {
     font-size: 24px;
+    width: 60%;
     @extend %flex-position
-
   }
 
   &-result::before {
@@ -48,9 +68,23 @@
   }
 
   &-result {
-      font-size: 28px;
-      color: red;
-      @extend %flex-position
+    font-size: 28px;
+    color: red;
+    width: 40%;
+    @extend %flex-position
+  }
+
+  &-right {
+    @extend %flex-position;
+  }
+
+  &-right button {
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    border: none;
+    background-image: url(../../../assets/images/delete-btn.png);
+    cursor: pointer;
   }
 
 }

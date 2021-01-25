@@ -28,16 +28,18 @@
 
 .calc-header--top input {
   height: 100%;
-  width: 300px;
+  width: 290px;
   border: none;
   background: transparent;
   text-align: end;
+  outline: none;
 }
 
 .calc {
   &-wrapper {
     height: 500px;
     width: 300px;
+    margin-bottom: 50px;
     background-color: #f2f2f2;
     border-radius: 5px;
     padding: 10px 5px;

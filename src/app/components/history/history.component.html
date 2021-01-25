@@ -1,5 +1,7 @@
 <div class="container">
-  <button class="close-button" (click)="navigateTo()">Close</button>
+  <div class="redirect-button--wrapper">
+    <button class="redirect-button" (click)="navigateTo()">Close History</button>
+  </div>
   <div class="history-wrapper" *ngFor="let history of historyArray">
     <div class="history-left">
       <div class="history-calculate">
@@ -10,7 +12,7 @@
       </div>
     </div>
     <div class="history-right">
-        <button (click)="deleteSingleHistory(history.id)">delete</button>
+      <button (click)="deleteSingleHistory(history.id)"></button>
     </div>
   </div>
 </div>

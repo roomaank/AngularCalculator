@@ -6,21 +6,6 @@
       "result": "17"
     },
     {
-      "id": "80b9677e-79c7-44d8-9a48-7b22c2114978",
-      "calculate": "97+5",
-      "result": "102"
-    },
-    {
-      "id": "e55a9ff1-8522-4081-a9a5-5f375ae791ed",
-      "calculate": "92+7",
-      "result": "99"
-    },
-    {
-      "id": "1fe0dd94-cdfc-4ca1-a55f-a3bd6cbfe2fe",
-      "calculate": "33+712",
-      "result": "745"
-    },
-    {
       "id": "19e0068a-56c3-490b-a1bc-c0e36072e2c5",
       "calculate": "745+66",
       "result": "811"
@@ -31,19 +16,19 @@
       "result": "98"
     },
     {
-      "id": "7743661a-4be1-49ef-8960-2d2fdd94be63",
-      "calculate": "82+4",
-      "result": "86"
-    },
-    {
       "id": "2c221f7a-adb1-46b6-9599-a0ffc5f411cc",
       "calculate": "92+47",
       "result": "139"
     },
     {
-      "id": "e68b40d2-465d-42db-b8b3-9856b0535f2f",
-      "calculate": "66+7",
-      "result": "73"
+      "id": "cdf324b4-3629-41fe-9154-2e5e2e74f5a6",
+      "calculate": "83+4+9",
+      "result": "87"
+    },
+    {
+      "id": "4448ebb7-a1a5-433c-bb86-8cef45966b1c",
+      "calculate": "83+49",
+      "result": "132"
     }
   ]
 }

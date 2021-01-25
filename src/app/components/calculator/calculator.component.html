@@ -13,8 +13,8 @@
       <div class="calc-main--left">
         <div class="main-left--top">
           <button class="button" (click)="clearAll()">C</button>
-          <button class="button">+/-</button>
-          <button class="button">%</button>
+          <button class="button" (click)="subtractSignBeforeDigit()">+/-</button>
+          <button class="button" (click)="percentOfNumber()">%</button>
         </div>
         <div class="main-left--digits">
           <button class="button" *ngFor="let digit of digits" (click)="clickDigit(digit)">{{digit}}</button>
