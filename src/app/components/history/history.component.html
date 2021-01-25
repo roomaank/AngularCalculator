@@ -1,6 +1,16 @@
-<div>
-    <button (click)="navigateTo()">Close</button>
-    <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error reprehenderit quasi, atque ullam qui distinctio labore hic quo iusto libero culpa nisi rerum totam voluptatibus ut corporis minus voluptates maiores consectetur, exercitationem ab dolorum, corrupti eaque. Deleniti iusto autem odio tempora in, quis consequatur voluptatibus expedita dolorem, obcaecati non laboriosam perspiciatis quisquam impedit amet sequi? Porro adipisci placeat corporis. Id ullam soluta maxime nostrum omnis, reiciendis magni! Molestiae, quia facere sequi quibusdam tempora quaerat ducimus aut, voluptatem dolorem cum consectetur perspiciatis a quidem consequatur quisquam ipsum minima amet? Labore, placeat neque optio cumque nam aperiam deleniti qui aliquam expedita veniam.
+<div class="container">
+  <button class="close-button" (click)="navigateTo()">Close</button>
+  <div class="history-wrapper" *ngFor="let history of historyArray">
+    <div class="history-left">
+      <div class="history-calculate">
+        {{history.calculate}}
+      </div>
+      <div class="history-result">
+        {{history.result}}
+      </div>
     </div>
+    <div class="history-right">
+        <button (click)="deleteSingleHistory(history.id)">delete</button>
+    </div>
+  </div>
 </div>

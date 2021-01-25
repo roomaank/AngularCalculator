@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Calc } from 'src/app/models/calculator-data';
+import { HistoryService } from 'src/app/services/history.service';
 
 @Component({
   selector: 'app-history',
@@ -8,15 +10,33 @@ import { Router } from '@angular/router';
 })
 export class HistoryComponent implements OnInit {
 
+  historyArray: Calc[] = [];
+
   constructor(
-    private route: Router
+    private route: Router,
+    private historyService: HistoryService
   ) { }
 
   ngOnInit(): void {
+    this.initHistoryArray();
   }
 
-  navigateTo(){
+  private initHistoryArray() {
+    this.historyService.getAllData()
+      .subscribe((value) => {
+        this.historyArray = value;
+      })
+  }
+
+  navigateTo() {
     this.route.navigate([''])
+  }
+
+  deleteSingleHistory(id){
+    this.historyService.deleteCalcData(id)
+      .subscribe(() => {
+        this.initHistoryArray();
+      })
   }
 
 }

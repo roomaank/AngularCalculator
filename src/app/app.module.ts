@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { HistoryComponent } from './components/history/history.component';
 
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

@@ -1,6 +1,9 @@
+import * as uuid from 'uuid';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DIGITS, OPERATIONS } from './calculator.constants';
+import { HistoryService } from 'src/app/services/history.service';
+import { Calc } from 'src/app/models/calculator-data';
 
 @Component({
   selector: 'app-calculator',
@@ -18,9 +21,11 @@ export class CalculatorComponent implements OnInit {
   digitSecond: number;
   operator = '';
   activateHistory: boolean;
+  historyData: Calc;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private historyService: HistoryService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +37,7 @@ export class CalculatorComponent implements OnInit {
       this.calculationPlace = 'Invalid length'
       return;
     }
+
   }
 
   clickOperator(operator) {
@@ -42,24 +48,19 @@ export class CalculatorComponent implements OnInit {
     this.operator = operator;
     this.calculationPlace += operator;
 
-    if (this.resultPlace) {    
-      const buffer = this.resultPlace;
-      // this.calculationPlace = buffer, operator;
-      this.calculationPlace = buffer;
+    
+    if (this.resultPlace) {
+      this.calculationPlace = this.resultPlace;
       this.resultPlace = ''
     }
-  }
-
-  enterMinusBeforeDigit(){
 
   }
 
-  //Як зробити щоб зчитувало з клавіатури???
-  // this.calculationPlace; так норм чи ні?
+
   result() {
     this.digitSecond = parseFloat(this.calculationPlace.split(this.operator)[1])
     if (this.operator === '×') {
-      this.calculationPlace;            
+      this.calculationPlace;
       this.resultPlace = (this.digitFirst * this.digitSecond).toString();
     } else if (this.operator === '÷') {
       this.calculationPlace;
@@ -75,6 +76,15 @@ export class CalculatorComponent implements OnInit {
     }
 
     this.activateHistory = true;
+    const resultData = {
+      id: uuid.v4(),
+      calculate: this.calculationPlace,
+      result: this.resultPlace
+    }
+    this.historyService.addCalcData(resultData).subscribe((value) => {
+      this.historyData = value;
+    })
+    
   }
 
   clearAll() {
@@ -83,7 +93,7 @@ export class CalculatorComponent implements OnInit {
     this.activateHistory = false;
   }
 
-  navigateTo(){
+  navigateTo() {
     this.router.navigate(['history'])
   }
 
