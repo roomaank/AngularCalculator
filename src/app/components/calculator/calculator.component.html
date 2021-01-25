@@ -13,7 +13,7 @@
       <div class="calc-main--left">
         <div class="main-left--top">
           <button class="button" (click)="clearAll()">C</button>
-          <button class="button">+/-</button>
+          <button class="button" (click)="enterMinusBeforeDigit()">+/-</button>
           <button class="button">%</button>
         </div>
         <div class="main-left--digits">
@@ -21,7 +21,8 @@
         </div>
       </div>
       <div class="calc-main--right">
-        <button class="button button-operation" *ngFor="let operator of operators" (click)="clickOperator(operator)">{{operator}}</button>
+        <button class="button button-operation" *ngFor="let operator of operators"
+          (click)="clickOperator(operator)">{{operator}}</button>
       </div>
     </div>
     <div class="calc-bottom">
@@ -30,4 +31,9 @@
       </div>
     </div>
   </div>
+  <div class="history-block">
+    <button *ngIf="activateHistory" class="history-button" (click)="navigateTo()"></button>
+  </div>
 </div>
+
+<router-outlet></router-outlet>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DIGITS, OPERATIONS } from './calculator.constants';
 
 @Component({
@@ -13,13 +14,14 @@ export class CalculatorComponent implements OnInit {
 
   calculationPlace = '';
   resultPlace = '';
-  digitFirst;
+  digitFirst: number;
   digitSecond: number;
   operator = '';
-  clipboard;
+  activateHistory: boolean;
 
-
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -42,17 +44,22 @@ export class CalculatorComponent implements OnInit {
 
     if (this.resultPlace) {    
       const buffer = this.resultPlace;
+      // this.calculationPlace = buffer, operator;
       this.calculationPlace = buffer;
-      this.digitFirst = buffer;
+      this.resultPlace = ''
     }
   }
 
+  enterMinusBeforeDigit(){
+
+  }
+
+  //Як зробити щоб зчитувало з клавіатури???
+  // this.calculationPlace; так норм чи ні?
   result() {
-    //Як зробити щоб зчитувало з клавіатури???
     this.digitSecond = parseFloat(this.calculationPlace.split(this.operator)[1])
-    console.log(this.digitSecond);
     if (this.operator === '×') {
-      this.calculationPlace;            //Так нормально?Це не правильно поганого тону???
+      this.calculationPlace;            
       this.resultPlace = (this.digitFirst * this.digitSecond).toString();
     } else if (this.operator === '÷') {
       this.calculationPlace;
@@ -67,11 +74,17 @@ export class CalculatorComponent implements OnInit {
       this.resultPlace = 'Error';
     }
 
+    this.activateHistory = true;
   }
 
   clearAll() {
     this.calculationPlace = '';
     this.resultPlace = '';
+    this.activateHistory = false;
+  }
+
+  navigateTo(){
+    this.router.navigate(['history'])
   }
 
 }
