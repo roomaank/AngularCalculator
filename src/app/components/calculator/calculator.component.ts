@@ -10,7 +10,7 @@ export class CalculatorComponent implements OnInit {
 
   digits = DIGITS;
   operations = OPERATIONS;
-  countArea = 0;
+  countArea = [];
   resultArea = 0;
 
   constructor() { }
@@ -24,7 +24,11 @@ export class CalculatorComponent implements OnInit {
   }
 
   clearAll(){
-    this.countArea = 0;
+    // this.countArea = 0;
+  }
+
+  result(){
+
   }
 
 }

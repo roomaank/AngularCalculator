@@ -83,10 +83,11 @@
   &-bottom {
     height: 70px;
     display: flex;
+    justify-content: flex-end;
   }
 
   &-bottom--left {
-    width: 50%;
+    width: 25%;
     height: 100%;
     @extend %items-position
   }
@@ -108,10 +109,11 @@
   }
 
   &-left--digits {
-    height: 75%;
+    height: 100%;
     width: 100%;
     flex-wrap: wrap;
-    @extend %items-position;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -121,6 +123,7 @@
   width: 60px;
   height: 60px;
   font-size: 30px;
+  margin: 0 7px;
   border: none;
   border-radius: 50%;
   outline: none;
