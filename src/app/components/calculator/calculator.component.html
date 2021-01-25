@@ -2,8 +2,8 @@
   <div class="calc-wrapper">
     <div class="calc-header">
       <div class="calc-header--top">
-        <div class="count-block">{{countArea}}</div>
-        <!-- <input class="count-block" type="text" value="{{countArea}}"> -->
+        <!-- <div class="count-block">{{countArea}}</div> -->
+        <input class="count-block" type="text" value="{{countArea}}">
       </div>
       <div class="calc-header--main">
         <div class="result-block">{{resultArea}}</div>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="calc-main--right">
-        <button class="button button-operation" *ngFor="let operation of operations">{{operation}}</button>
+        <button class="button button-operation" *ngFor="let operation of operations" (click)="clickOperation(operation)">{{operation}}</button>
       </div>
     </div>
     <div class="calc-bottom">

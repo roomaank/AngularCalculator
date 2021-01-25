@@ -8,10 +8,17 @@ import { DIGITS, OPERATIONS } from './calculator.constants';
 })
 export class CalculatorComponent implements OnInit {
 
+  calc = {
+    firstDigit: null,
+    secondDigit: null,
+    operator: null,
+    value: 0
+  }
+
   digits = DIGITS;
   operations = OPERATIONS;
-  countArea = 0;
-  resultArea = 0;
+  countArea = '';
+  resultArea = this.calc.value;
 
   constructor() { }
 
@@ -20,15 +27,19 @@ export class CalculatorComponent implements OnInit {
 
   clickButton(digit) {
     console.log(digit);
-    this.countArea = digit;
-    
+    this.countArea += digit;
+  }
+
+  clickOperation(operation){
+    console.log(operation);
+    this.countArea += operation;
   }
 
   clearAll(){
   }
 
   result(){
-
+    this.countArea = '0';
   }
 
 }

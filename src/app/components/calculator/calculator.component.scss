@@ -24,12 +24,13 @@
   font-family: 'Rubik', sans-serif;
 }
 
-// .calc-header--top input{
-//   height: 100%;
-//   width: 300px;
-//   border: none;
-//   background: transparent;
-// }
+.calc-header--top input{
+  height: 100%;
+  width: 300px;
+  border: none;
+  background: transparent;
+  text-align: end;
+}
 
 .calc {
   &-wrapper {
