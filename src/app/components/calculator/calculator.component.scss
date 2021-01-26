@@ -1,6 +1,5 @@
 %items-position {
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 
@@ -26,15 +25,6 @@
   font-family: 'Rubik', sans-serif;
 }
 
-.calc-header--top input {
-  height: 100%;
-  width: 290px;
-  border: none;
-  background: transparent;
-  text-align: end;
-  outline: none;
-}
-
 .calc {
   &-wrapper {
     height: 500px;
@@ -47,7 +37,7 @@
   }
 
   &-header {
-    height: 150px;
+    height: 30%;
     overflow: hidden;
   }
 
@@ -66,66 +56,12 @@
   }
 
   &-main {
-    height: 280px;
-    display: flex;
-  }
-
-  &-main--left {
-    height: 100%;
-    width: 75%;
-  }
-
-  &-main--right {
-    height: 100%;
-    width: 25%;
+    height: 70%;
     flex-wrap: wrap;
     @extend %items-position;
   }
 
-  &-main--right button {
-    background-color: #61c6f2;
-    color: white;
 
-    &:active {
-      background-color: #18b1f3;
-    }
-  }
-
-  &-bottom {
-    height: 70px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  &-bottom--left {
-    width: 25%;
-    height: 100%;
-    @extend %items-position
-  }
-
-  &-bottom--right {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.main {
-  &-left--top {
-    height: 25%;
-    width: 100%;
-    @extend %items-position;
-  }
-
-  &-left--digits {
-    height: 100%;
-    width: 100%;
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
-  }
 }
 
 .button {
@@ -155,28 +91,5 @@
 
   &:active {
     background-color: #18b1f3;
-  }
-}
-
-.history-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 300px;
-}
-
-.history-button {
-  height: 64px;
-  width: 64px;
-  background-color: transparent;
-  border: none;
-  background-image: url(../../../assets/images/history.png);
-  outline: none;
-  cursor: pointer;
-
-  &:active {
-    transform: translateY(1px);
-    background-image: url(../../../assets/images/history-blue.png);
   }
 }
