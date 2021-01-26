@@ -12,6 +12,7 @@ import { Calc } from 'src/app/models/calculator-data';
 })
 export class CalculatorComponent implements OnInit {
 
+  historyData: Calc;
   digits = DIGITS;
   operators = OPERATIONS;
 
@@ -20,8 +21,8 @@ export class CalculatorComponent implements OnInit {
   digitFirst: number;
   digitSecond: number;
   operator = '';
+  clipboard:number;
   activateHistory: boolean;
-  historyData: Calc;
 
   constructor(
     private router: Router,
@@ -37,7 +38,6 @@ export class CalculatorComponent implements OnInit {
       this.calculationPlace = 'Invalid length'
       return;
     }
-
   }
 
   clickOperator(operator) {
@@ -48,7 +48,6 @@ export class CalculatorComponent implements OnInit {
     this.operator = operator;
     this.calculationPlace += operator;
 
-    
     if (this.resultPlace) {
       this.calculationPlace = this.resultPlace;
       this.resultPlace = ''
@@ -103,7 +102,9 @@ export class CalculatorComponent implements OnInit {
   percentOfNumber(){
     this.digitFirst = parseFloat(this.calculationPlace)
     const percentDigit = this.digitFirst / 100;
+    this.calculationPlace = ''
     this.resultPlace = percentDigit.toString();    
+
   }
 
   navigateTo() {
