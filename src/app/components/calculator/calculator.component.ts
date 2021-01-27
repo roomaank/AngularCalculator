@@ -90,15 +90,6 @@ export class CalculatorComponent implements OnInit {
     } else if (button.event === 'subtract') {
       this.firstDigit = this.firstDigit * (-1)
       this.resultLabel = this.firstDigit;
-    } else if (button.event === 'percent') {
-      if (this.firstDigit && this.operator) {
-        console.log('this operator true');
-        console.log(this.firstDigit);
-        this.secondDigit = this.value
-        console.log(this.secondDigit);
-      } else {
-        console.log('this operator true');
-      }
     } else {
       console.log('This button has not event key in Object');
     }

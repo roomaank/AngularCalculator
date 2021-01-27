@@ -6,18 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CalculatorComponent } from './components/calculator/calculator.component';
-import { HistoryComponent } from './components/history/history.component';
 
 const appRoutes: Routes = [
   { path: 'calculator', component: CalculatorComponent },
-  { path: 'history', component: HistoryComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     CalculatorComponent,
-    HistoryComponent,
   ],
   imports: [
     BrowserModule,
