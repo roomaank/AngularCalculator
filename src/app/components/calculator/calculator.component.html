@@ -6,7 +6,7 @@
     <div class="calc-main">
       <button class="button" 
       *ngFor="let button of buttons"
-      [class.operator-btn]="button.appointment === 'operator'"
+      [class.btn-operator]="button.appointment === 'operator'"
       [class.btn-equal]="button.appointment === 'result'" 
       (click)="clickOnButton(button)">{{button.value}}</button>
     </div>

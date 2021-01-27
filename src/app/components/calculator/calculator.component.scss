@@ -28,7 +28,7 @@
     align-items: flex-end;
   }
 
-  &-header--inner{
+  &-header--inner {
     font-size: 50px;
     color: #61c6f2;
     margin: 0 10px 10px 0;
@@ -62,24 +62,25 @@
   }
 }
 
-.operator {
-  &-btn {
+.btn {
+  &-operator {
     background-color: #61c6f2;
     color: white;
   }
 
-  &-btn:focus {
+  &-operator:focus {
     background-color: rgb(23, 148, 202);
   }
-}
 
-.btn-equal {
-  background-color: #61c6f2;
-  color: white;
-  width: 130px;
-  border-radius: 30px;
+  &-equal {
+    background-color: #61c6f2;
+    color: white;
+    width: 130px;
+    border-radius: 30px;
+  }
 
-  &:active {
+  &-equal:active {
     background-color: #18b1f3;
   }
+
 }
