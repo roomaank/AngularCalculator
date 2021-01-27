@@ -12,9 +12,9 @@ export class CalculatorComponent implements OnInit {
   topLabel = '';
   resultLabel = '';
   currentDigit;
+  secondDigit;
   clipboard;
-  currentValue;
-  operator:null;
+  operator: null;
 
   constructor(
   ) { }
@@ -33,39 +33,39 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  private numberClicked(button) { 
+  private numberClicked(button) {
     const value = button.value;
-    if (!this.operator){
+    if (!this.operator) {
       this.currentDigit = value;
-      // console.log('Current Digit: ', this.currentDigit);
     } else {
-      //зробити додавання або іншу операцію буферу з поточним числом
-      this.clipboard = this.currentDigit;
-      console.log('Clipboard: ',this.clipboard);
-      this.currentDigit = value;
+      console.log('*****************************************************');
       console.log('Current Digit: ', this.currentDigit);
-      
-      
-      switch (this.operator){
+      this.secondDigit = value;
+      console.log('Second Digit: ', this.secondDigit);
+
+      switch (this.operator) {
         case '+':
           console.log('switch +');
-          this.clipboard = this.clipboard + this.currentDigit;
+          this.clipboard = this.currentDigit + this.secondDigit;
           console.log('Clipboard: ', this.clipboard);
-          this.resultLabel = this.clipboard;
+          this.currentDigit = this.clipboard;
+          console.log('_________');
+          console.log('Current digit after operation: ', this.currentDigit);
+          console.log('*****************************************************');
           break;
         case '-':
           console.log('switch -');
           break;
         case '÷':
           console.log('switch ÷');
-            break;
+          break;
         case '×':
           console.log('switch ×');
           break;
         default:
           console.log('default switch');
       }
-    } 
+    }
     this.resultLabel = value
 
   }
