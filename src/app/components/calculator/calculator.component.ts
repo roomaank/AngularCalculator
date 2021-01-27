@@ -13,7 +13,7 @@ export class CalculatorComponent implements OnInit {
   firstDigit;
   secondDigit;
   clipboard;
-  value;
+  value = '';
   operator: null;
 
   constructor() { }
@@ -35,6 +35,7 @@ export class CalculatorComponent implements OnInit {
 
   private numberClicked(button) {
     this.value = button.value;
+    console.log('Value',this.value);
     if (!this.operator) {
       this.firstDigit = this.value;
     } else {
