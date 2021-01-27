@@ -9,18 +9,16 @@ import { BUTTONS } from './calculator.constants';
 export class CalculatorComponent implements OnInit {
 
   buttons = BUTTONS;
-  topLabel = '';
   resultLabel = '';
-  currentDigit;
+  firstDigit;
   secondDigit;
   clipboard;
+  value;
   operator: null;
 
-  constructor(
-  ) { }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 
   clickOnButton(button) {
@@ -34,44 +32,36 @@ export class CalculatorComponent implements OnInit {
   }
 
   private numberClicked(button) {
-    const value = button.value;
+    this.value = button.value;
     if (!this.operator) {
-      this.currentDigit = value;
+      this.firstDigit = this.value;
     } else {
-      console.log('Current Digit: ', this.currentDigit);
-      this.secondDigit = value;
+      console.log('First Digit: ', this.firstDigit);
+      this.secondDigit = this.value;
       console.log('Second Digit: ', this.secondDigit);
 
       switch (this.operator) {
         case '+':
-          this.clipboard = this.currentDigit + this.secondDigit;
-          console.log('Clipboard: ', this.clipboard);
-          this.currentDigit = this.clipboard;
-          console.log('current digit after clipboard: ', this.currentDigit);
+          this.clipboard = this.firstDigit + this.secondDigit;
+          this.firstDigit = this.clipboard;
           break;
         case '-':
-          this.clipboard = this.currentDigit - this.secondDigit
-          console.log('Clipboard: ', this.clipboard);
-          this.currentDigit = this.clipboard;
-          console.log('current digit after clipboard: ', this.currentDigit);
+          this.clipboard = this.firstDigit - this.secondDigit
+          this.firstDigit = this.clipboard;
           break;
         case '÷':
-          this.clipboard = this.currentDigit / this.secondDigit;
-          console.log('Clipboard: ', this.clipboard);
-          this.currentDigit = this.clipboard;
-          console.log('current digit after clipboard: ', this.currentDigit);
+          this.clipboard = this.firstDigit / this.secondDigit;
+          this.firstDigit = this.clipboard;
           break;
         case '×':
-          this.clipboard = this.currentDigit * this.secondDigit
-          console.log('Clipboard: ', this.clipboard);
-          this.currentDigit = this.clipboard;
-          console.log('current digit after clipboard: ', this.currentDigit);
+          this.clipboard = this.firstDigit * this.secondDigit
+          this.firstDigit = this.clipboard;
           break;
         default:
           console.log('default switch');
       }
     }
-    this.resultLabel = value
+    this.resultLabel = this.value
 
   }
 
@@ -81,25 +71,28 @@ export class CalculatorComponent implements OnInit {
       return;
     }
 
-    if (this.clipboard){
+    if (this.clipboard) {
       this.resultLabel = this.clipboard
     }
 
-    if(button.event === 'clear'){
-      console.log('CLEAR');
+    if (button.event === 'clear') {
       this.resultLabel = ''
-    } else if (button.event === 'subtract'){
-      this.currentDigit = this.currentDigit * (-1)
-      this.resultLabel = this.currentDigit;      
-    } else if (button.event === 'percent'){
-      // this.currentDigit = this.currentDigit / 100
-      // this.resultLabel = this.currentDigit;
+    } else if (button.event === 'subtract') {
+      this.firstDigit = this.firstDigit * (-1)
+      this.resultLabel = this.firstDigit;
+    } else if (button.event === 'percent') {
+      // this.firstDigit = this.firstDigit / 100
+      // this.resultLabel = this.firstDigit;
 
-      if (this.secondDigit){
-        console.log('123123123');
-        console.log(this.currentDigit);
+      if (this.firstDigit && this.operator) {
+        console.log('this operator true');
+        console.log(this.firstDigit);
+        this.secondDigit = this.value
         console.log(this.secondDigit);
-      }           
+      } else {
+        console.log('this operator true');
+      }
+
     } else {
       console.log('This button has not event key in Object');
     }

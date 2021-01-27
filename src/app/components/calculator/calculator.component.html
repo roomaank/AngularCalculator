@@ -1,13 +1,14 @@
 <div class="container">
   <div class="calc-wrapper">
     <div class="calc-header">
-      <div class="calc-header--main">
-        <div class="result-block">{{resultLabel}}</div>
-      </div>
+      <div class="calc-header--inner">{{resultLabel}}</div>
     </div>
     <div class="calc-main">
-      <button class="button" [class.operator-btn]="button.appointment === 'operator'" *ngFor="let button of buttons"
-        (click)="clickOnButton(button)">{{button.value}}</button>
+      <button class="button" 
+      *ngFor="let button of buttons"
+      [class.operator-btn]="button.appointment === 'operator'"
+      [class.btn-equal]="button.appointment === 'result'" 
+      (click)="clickOnButton(button)">{{button.value}}</button>
     </div>
   </div>
 </div>
