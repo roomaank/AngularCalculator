@@ -34,9 +34,10 @@ export class CalculatorComponent implements OnInit {
   }
 
   private numberClicked(button) {
-    // cosnt combinedValue = 
-    // this.value = button.value;
+
     this.value = Number(`${this.value || ''}` + button.value);
+    console.log(this.value);
+    
 
     if (!this.operator) {
       this.firstDigit = this.value;
@@ -76,7 +77,9 @@ export class CalculatorComponent implements OnInit {
   }
 
   private operationClicked(button) {
+    console.log(this.value);
     this.value = null
+    console.log(this.value);
     this.operator = button.value
     if (this.resultLabel === '') {
       return;
