@@ -1,15 +1,18 @@
 export const BUTTONS = [
     {
         type: 'string',
-        value: 'C'
+        value: 'C',
+        event: 'clear'
     },
     {
         type: 'string',
-        value: '+/-'
+        value: '+/-',
+        event: 'subtract'
     },
     {
         type: 'string',
-        value: '%'
+        value: '%',
+        event: 'percent'
     },
     {
         type: 'string',
