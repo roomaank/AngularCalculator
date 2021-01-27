@@ -24,10 +24,12 @@ export class CalculatorComponent implements OnInit {
   clickOnButton(button) {
     if (button.type === 'number') {
       this.numberClicked(button);
-    } else if (button.value === '=') {
+    } else if (button.appointment === 'operator'){
+      this.operationClicked(button);
+    }else if (button.value === '=') {
       this.resultClicked();
     } else {
-      this.operationClicked(button);
+      this.additionalFuncButtonsClicked(button);
     }
   }
 
@@ -75,15 +77,19 @@ export class CalculatorComponent implements OnInit {
       this.resultLabel = this.clipboard
     }
 
+  }
+
+  private resultClicked() {
+    this.resultLabel = this.clipboard;
+  }
+
+  additionalFuncButtonsClicked(button){
     if (button.event === 'clear') {
       this.resultLabel = ''
     } else if (button.event === 'subtract') {
       this.firstDigit = this.firstDigit * (-1)
       this.resultLabel = this.firstDigit;
     } else if (button.event === 'percent') {
-      // this.firstDigit = this.firstDigit / 100
-      // this.resultLabel = this.firstDigit;
-
       if (this.firstDigit && this.operator) {
         console.log('this operator true');
         console.log(this.firstDigit);
@@ -92,17 +98,10 @@ export class CalculatorComponent implements OnInit {
       } else {
         console.log('this operator true');
       }
-
     } else {
       console.log('This button has not event key in Object');
     }
-
   }
-
-  private resultClicked() {
-    this.resultLabel = this.clipboard;
-  }
-
 
 
 }
