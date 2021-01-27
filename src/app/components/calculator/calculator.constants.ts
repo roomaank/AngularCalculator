@@ -13,7 +13,8 @@ export const BUTTONS = [
     },
     {
         type: 'string',
-        value: '÷'
+        value: '÷',
+        appointment: 'operator'
     },
     {
         type: 'number',
@@ -29,7 +30,8 @@ export const BUTTONS = [
     },
     {
         type: 'string',
-        value: '×'
+        value: '×',
+        appointment: 'operator'
     },
     {
         type: 'number',
@@ -45,7 +47,8 @@ export const BUTTONS = [
     },
     {
         type: 'string',
-        value: '-'
+        value: '-',
+        appointment: 'operator'
     },
     {
         type: 'number',
@@ -61,7 +64,8 @@ export const BUTTONS = [
     },
     {
         type: 'string',
-        value: '+'
+        value: '+',
+        appointment: 'operator'
     },
     {
         type: 'number',

@@ -1,16 +1,13 @@
 <div class="container">
   <div class="calc-wrapper">
     <div class="calc-header">
-      <div class="calc-header--top">
-        <div class="count-block"></div>
-      </div>
       <div class="calc-header--main">
-        <div class="result-block"></div>
+        <div class="result-block">{{resultLabel}}</div>
       </div>
     </div>
     <div class="calc-main">
-      <button class="button" *ngFor="let button of buttons">{{button.value}}</button>
+      <button class="button" [class.operator-btn]="button.appointment === 'operator'" *ngFor="let button of buttons"
+        (click)="clickOnButton(button)">{{button.value}}</button>
     </div>
   </div>
 </div>
-
