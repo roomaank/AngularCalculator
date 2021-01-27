@@ -13,7 +13,7 @@ export class CalculatorComponent implements OnInit {
   firstDigit;
   secondDigit;
   clipboard;
-  value = '';
+  value;
   operator: null;
 
   constructor() { }
@@ -34,8 +34,10 @@ export class CalculatorComponent implements OnInit {
   }
 
   private numberClicked(button) {
-    this.value = button.value;
-    console.log('Value',this.value);
+    // cosnt combinedValue = 
+    // this.value = button.value;
+    this.value = Number(`${this.value || ''}` + button.value);
+
     if (!this.operator) {
       this.firstDigit = this.value;
     } else {
@@ -46,18 +48,23 @@ export class CalculatorComponent implements OnInit {
       switch (this.operator) {
         case '+':
           this.clipboard = this.firstDigit + this.secondDigit;
+          console.log('Clipboard: ',this.clipboard);
           this.firstDigit = this.clipboard;
           break;
         case '-':
-          this.clipboard = this.firstDigit - this.secondDigit
+          this.clipboard = this.firstDigit - this.secondDigit;
+          console.log('Clipboard: ',this.clipboard);
           this.firstDigit = this.clipboard;
           break;
         case '÷':
           this.clipboard = this.firstDigit / this.secondDigit;
+          console.log('Clipboard: ',this.clipboard);
           this.firstDigit = this.clipboard;
           break;
         case '×':
-          this.clipboard = this.firstDigit * this.secondDigit
+          this.clipboard = this.firstDigit * this.secondDigit;
+          console.log('Clipboard: ',this.clipboard);
+          console.log('____');
           this.firstDigit = this.clipboard;
           break;
         default:
@@ -69,6 +76,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   private operationClicked(button) {
+    this.value = null
     this.operator = button.value
     if (this.resultLabel === '') {
       return;
@@ -82,6 +90,8 @@ export class CalculatorComponent implements OnInit {
 
   private resultClicked() {
     this.resultLabel = this.clipboard;
+    console.log(this.resultLabel);
+    
   }
 
   additionalFuncButtonsClicked(button){
