@@ -9,7 +9,7 @@ import { BUTTONS } from './calculator.constants';
 export class CalculatorComponent implements OnInit {
 
   buttons = BUTTONS;
-  resultLabel = '';
+  resultLabel = '0';
   firstDigit;
   secondDigit;
   clipboard;
@@ -34,15 +34,13 @@ export class CalculatorComponent implements OnInit {
   }
 
   private numberClicked(button) {
-
     this.value = Number(`${this.value || ''}` + button.value);
     console.log(this.value);
     
-
     if (!this.operator) {
       this.firstDigit = this.value;
-    } else {
       console.log('First Digit: ', this.firstDigit);
+    } else {
       this.secondDigit = this.value;
       console.log('Second Digit: ', this.secondDigit);
 
@@ -77,9 +75,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   private operationClicked(button) {
-    console.log(this.value);
     this.value = null
-    console.log(this.value);
     this.operator = button.value
     if (this.resultLabel === '') {
       return;
@@ -100,6 +96,10 @@ export class CalculatorComponent implements OnInit {
   additionalFuncButtonsClicked(button){
     if (button.event === 'clear') {
       this.resultLabel = ''
+      this.value = null;
+      this.firstDigit = null;
+      this.secondDigit = null;
+      this.clipboard = null;
     } else if (button.event === 'subtract') {
       this.firstDigit = this.firstDigit * (-1)
       this.resultLabel = this.firstDigit;
