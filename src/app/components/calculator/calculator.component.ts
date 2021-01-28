@@ -38,36 +38,39 @@ export class CalculatorComponent implements OnInit {
 
     if (!this.operator) {
       this.firstDigit = buttonValue;
-      console.log('First Digit: ', this.firstDigit);
     } else {
-      this.secondDigit = buttonValue;
-      console.log('Second Digit: ', this.secondDigit);
-    }
+
       switch (this.operator) {
         case '+':
-          this.clipboard = this.firstDigit + this.secondDigit;
-          console.log('Clipboard: ', this.clipboard);
-          this.firstDigit = this.clipboard;
+          if (this.operator) {
+            this.secondDigit = buttonValue;
+            console.log('First Digit: ', this.firstDigit, 'Second Digit: ', this.secondDigit);
+            this.clipboard = this.firstDigit + this.secondDigit;
+            console.log('Clipboard: ', this.clipboard);
+          }
           break;
         case '-':
-          this.clipboard = this.firstDigit - this.secondDigit;
-          console.log('Clipboard: ', this.clipboard);
-          this.firstDigit = this.clipboard;
+          if (this.operator) {
+            this.secondDigit = buttonValue;
+            this.clipboard = this.firstDigit - this.secondDigit;
+          }
           break;
         case '÷':
-          this.clipboard = this.firstDigit / this.secondDigit;
-          console.log('Clipboard: ', this.clipboard);
-          this.firstDigit = this.clipboard;
+          if (this.operator){
+            this.secondDigit = buttonValue
+            this.clipboard = this.firstDigit / this.secondDigit;
+          }
           break;
         case '×':
-          this.clipboard = this.firstDigit * this.secondDigit;
-          console.log('Clipboard: ', this.clipboard);
-          console.log('____');
-          this.firstDigit = this.clipboard;
+          if (this.operator){
+            this.secondDigit = buttonValue
+            this.clipboard = this.firstDigit * this.secondDigit;
+          }
           break;
         default:
           console.log('default switch');
       }
+    }
     this.value = buttonValue;
     this.resultLabel = this.value;
 
@@ -82,6 +85,10 @@ export class CalculatorComponent implements OnInit {
 
     if (this.clipboard) {
       this.resultLabel = this.clipboard
+    }
+
+    if (this.clipboard && this.clipboard) {
+      this.firstDigit = this.clipboard
     }
 
   }
