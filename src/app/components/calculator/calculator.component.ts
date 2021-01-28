@@ -24,9 +24,9 @@ export class CalculatorComponent implements OnInit {
   clickOnButton(button) {
     if (button.type === 'number') {
       this.numberClicked(button);
-    } else if (button.appointment === 'operator'){
+    } else if (button.appointment === 'operator') {
       this.operationClicked(button);
-    }else if (button.value === '=') {
+    } else if (button.value === '=') {
       this.resultClicked();
     } else {
       this.additionalFuncButtonsClicked(button);
@@ -34,43 +34,42 @@ export class CalculatorComponent implements OnInit {
   }
 
   private numberClicked(button) {
-    this.value = Number(`${this.value || ''}` + button.value);
-    console.log(this.value);
-    
+    const buttonValue = Number(`${this.value || ''}` + button.value);
+
     if (!this.operator) {
-      this.firstDigit = this.value;
+      this.firstDigit = buttonValue;
       console.log('First Digit: ', this.firstDigit);
     } else {
-      this.secondDigit = this.value;
+      this.secondDigit = buttonValue;
       console.log('Second Digit: ', this.secondDigit);
-
+    }
       switch (this.operator) {
         case '+':
           this.clipboard = this.firstDigit + this.secondDigit;
-          console.log('Clipboard: ',this.clipboard);
+          console.log('Clipboard: ', this.clipboard);
           this.firstDigit = this.clipboard;
           break;
         case '-':
           this.clipboard = this.firstDigit - this.secondDigit;
-          console.log('Clipboard: ',this.clipboard);
+          console.log('Clipboard: ', this.clipboard);
           this.firstDigit = this.clipboard;
           break;
         case '÷':
           this.clipboard = this.firstDigit / this.secondDigit;
-          console.log('Clipboard: ',this.clipboard);
+          console.log('Clipboard: ', this.clipboard);
           this.firstDigit = this.clipboard;
           break;
         case '×':
           this.clipboard = this.firstDigit * this.secondDigit;
-          console.log('Clipboard: ',this.clipboard);
+          console.log('Clipboard: ', this.clipboard);
           console.log('____');
           this.firstDigit = this.clipboard;
           break;
         default:
           console.log('default switch');
       }
-    }
-    this.resultLabel = this.value
+    this.value = buttonValue;
+    this.resultLabel = this.value;
 
   }
 
@@ -90,12 +89,12 @@ export class CalculatorComponent implements OnInit {
   private resultClicked() {
     this.resultLabel = this.clipboard;
     console.log(this.resultLabel);
-    
+
   }
 
-  additionalFuncButtonsClicked(button){
+  additionalFuncButtonsClicked(button) {
     if (button.event === 'clear') {
-      this.resultLabel = ''
+      this.resultLabel = '0'
       this.value = null;
       this.firstDigit = null;
       this.secondDigit = null;
