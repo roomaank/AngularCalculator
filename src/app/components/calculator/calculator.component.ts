@@ -28,9 +28,16 @@ export class CalculatorComponent implements OnInit {
       this.operationClicked(button);
     } else if (button.value === '=') {
       this.resultClicked();
+    } else if (button.event === 'clear') {
+      this.clearAll();
+    } else if (button.event === 'subtract') {
+      this.subtractCurrentDigit();
+    } else if (button.event === 'percent') {
+      this.percentOfDigit();
     } else {
-      this.additionalFuncButtonsClicked(button);
+      console.log('else');
     }
+
   }
 
   private numberClicked(button) {
@@ -44,7 +51,7 @@ export class CalculatorComponent implements OnInit {
         case '+':
           if (this.operator) {
             this.secondDigit = buttonValue;
-            console.log('First Digit: ', this.firstDigit, 'Second Digit: ', this.secondDigit);
+            console.log('First Digit: ', this.firstDigit, this.operator, 'Second Digit: ', this.secondDigit);
             this.clipboard = this.firstDigit + this.secondDigit;
             console.log('Clipboard: ', this.clipboard);
           }
@@ -56,13 +63,13 @@ export class CalculatorComponent implements OnInit {
           }
           break;
         case '÷':
-          if (this.operator){
+          if (this.operator) {
             this.secondDigit = buttonValue
             this.clipboard = this.firstDigit / this.secondDigit;
           }
           break;
         case '×':
-          if (this.operator){
+          if (this.operator) {
             this.secondDigit = buttonValue
             this.clipboard = this.firstDigit * this.secondDigit;
           }
@@ -73,7 +80,6 @@ export class CalculatorComponent implements OnInit {
     }
     this.value = buttonValue;
     this.resultLabel = this.value;
-
   }
 
   private operationClicked(button) {
@@ -87,8 +93,9 @@ export class CalculatorComponent implements OnInit {
       this.resultLabel = this.clipboard
     }
 
-    if (this.clipboard && this.clipboard) {
+    if (this.clipboard) {
       this.firstDigit = this.clipboard
+      console.log('!@#!@#!@#');
     }
 
   }
@@ -99,20 +106,30 @@ export class CalculatorComponent implements OnInit {
 
   }
 
-  additionalFuncButtonsClicked(button) {
-    if (button.event === 'clear') {
-      this.resultLabel = '0'
-      this.value = null;
-      this.firstDigit = null;
-      this.secondDigit = null;
-      this.clipboard = null;
-    } else if (button.event === 'subtract') {
-      this.firstDigit = this.firstDigit * (-1)
-      this.resultLabel = this.firstDigit;
-    } else {
-      console.log('This button has not event key in Object');
-    }
+  private clearAll() {
+    this.resultLabel = '0'
+    this.value = null;
+    this.firstDigit = null;
+    this.secondDigit = null;
+    this.clipboard = null;
   }
+
+  private subtractCurrentDigit() {
+    if (this.firstDigit) {
+      this.firstDigit = this.firstDigit * (-1);
+      this.resultLabel = this.firstDigit;
+      if (this.operator) {
+        console.log('!_!_!_!_!_!');
+      }
+    }
+
+  }
+
+  private percentOfDigit() {
+    console.log('percent of digit');
+
+  }
+
 
 
 }
