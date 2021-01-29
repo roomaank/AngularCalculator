@@ -1,0 +1,13 @@
+<div>
+  <button (click)="decrement()">-</button>
+  {{count}}
+  <button (click)="increment()">+</button>
+  <div>
+    <button (click)="resetCount()">Reset</button>
+  </div>
+</div>
+
+<div class="btn-wrapper">
+    <h2></h2>
+  <button *ngFor="let button of buttons">{{button.value}}</button>
+</div>
