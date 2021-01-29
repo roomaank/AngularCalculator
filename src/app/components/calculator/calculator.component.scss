@@ -91,6 +91,20 @@
   }
 }
 
+.button{
+  &-gray{
+    background-color: #a5a5a5;
+    color: black;
+  
+  }
+
+  &-gray:active{
+    color: black;
+  }
+}
+
+
+
 .btn {
   &-operator {
     background-color: #61c6f2;

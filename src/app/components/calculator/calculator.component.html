@@ -9,9 +9,10 @@
       <div class="calc-header--inner" [class.calc-header--changed]="changedColor">{{resultLabel}}</div>
     </div>
     <div class="calc-main">
-      <button class="button" *ngIf="isTyped" [class.button-changed]="changedColor" (click)="clearAll()">C</button>
-      <button class="button" *ngIf="!isTyped" [class.button-changed]="changedColor">AC</button>
+      <button class="button" *ngIf="isTyped" [ngClass]="{'button-changed': changedColor, 'button-gray': changedColor}" (click)="clearAll()">C</button>
+      <button class="button" *ngIf="!isTyped" [ngClass]="{'button-changed': changedColor, 'button-gray': changedColor}">AC</button>
       <button class="button" *ngFor="let button of buttons" [ngClass]="{
+        'button-gray': changedColor && button.changedColor === true,
         'button-changed': changedColor,
         'btn-operator': button.appointment === 'operator',
         'btn-equal': button.appointment === 'result',
