@@ -15,6 +15,7 @@ export class CalculatorComponent implements OnInit {
   clipboard;
   value;
   operator: null;
+  changedColor: boolean;
 
   constructor() { }
 
@@ -35,9 +36,8 @@ export class CalculatorComponent implements OnInit {
     } else if (button.event === 'percent') {
       this.percentOfDigit();
     } else {
-      console.log('else');
+      this.dotClicked(button)
     }
-
   }
 
   private numberClicked(button) {
@@ -46,7 +46,6 @@ export class CalculatorComponent implements OnInit {
     if (!this.operator) {
       this.firstDigit = buttonValue;
     } else {
-
       switch (this.operator) {
         case '+':
           if (this.operator) {
@@ -97,13 +96,6 @@ export class CalculatorComponent implements OnInit {
       this.firstDigit = this.clipboard
       console.log('!@#!@#!@#');
     }
-
-  }
-
-  private resultClicked() {
-    this.resultLabel = this.clipboard;
-    console.log(this.resultLabel);
-
   }
 
   private clearAll() {
@@ -113,7 +105,7 @@ export class CalculatorComponent implements OnInit {
     this.secondDigit = null;
     this.clipboard = null;
   }
-
+  
   private subtractCurrentDigit() {
     if (this.firstDigit) {
       this.firstDigit = this.firstDigit * (-1);
@@ -121,15 +113,34 @@ export class CalculatorComponent implements OnInit {
       if (this.operator) {
         console.log('!_!_!_!_!_!');
       }
-    }
-
+    } 
   }
-
+  
   private percentOfDigit() {
     console.log('percent of digit');
-
+    if (this.firstDigit){
+      this.firstDigit = this.firstDigit / 100
+      this.resultLabel = this.firstDigit
+    }
+  }
+  
+  private dotClicked(button){
+    const dot = button.value;
+    console.log(dot);
+    // if (this.firstDigit){
+    //   this.firstDigit = this.firstDigit + dot;
+    //   console.log(this.firstDigit);
+    //   this.resultLabel = this.firstDigit;    
+    // }
   }
 
+  private resultClicked() {
+    this.resultLabel = this.clipboard;
+  }
+  
+  changeColor(){
+    this.changedColor = !this.changedColor;
+  }
 
 
 }

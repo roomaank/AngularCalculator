@@ -76,7 +76,8 @@ export const BUTTONS = [
     },
     {
         type: 'string',
-        value: '.'
+        value: '.',
+        appointment: '.'
     },
     {
         type: 'string',

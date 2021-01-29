@@ -1,14 +1,26 @@
 <div class="container">
-  <div class="calc-wrapper">
+  <button class="change-btn" 
+  [ngClass]="{
+    'change-orange': !changedColor,
+    'change-blue': changedColor
+  }" 
+  (click)="changeColor()">
+  </button>
+  <div class="calc-wrapper" [class.calc-wrapper--changed]="changedColor">
     <div class="calc-header">
-      <div class="calc-header--inner">{{resultLabel}}</div>
+      <div class="calc-header--inner" [class.calc-header--changed]="changedColor">{{resultLabel}}</div>
     </div>
     <div class="calc-main">
-      <button class="button" 
-      *ngFor="let button of buttons"
-      [class.btn-operator]="button.appointment === 'operator'"
-      [class.btn-equal]="button.appointment === 'result'" 
+      <button class="button" *ngFor="let button of buttons" 
+      [ngClass]="{
+        'button-changed': changedColor,
+        'btn-operator': button.appointment === 'operator',
+        'btn-equal': button.appointment === 'result',
+        'btn-orange': changedColor && button.appointment === 'operator' || changedColor && button.appointment === 'result',
+        'btn-equal--changed': changedColor && button.appointment === 'result'
+      }" 
       (click)="clickOnButton(button)">{{button.value}}</button>
     </div>
   </div>
 </div>
+
