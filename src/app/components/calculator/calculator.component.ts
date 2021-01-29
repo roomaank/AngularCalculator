@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { BUTTONS } from './calculator.constants';
 
 @Component({
@@ -18,7 +18,16 @@ export class CalculatorComponent implements OnInit {
   isTyped: boolean;
   changedColor: boolean;
 
+  
   constructor() { }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    const keyCode = event.keyCode;
+    console.log(keyCode);
+    
+
+  }
 
   ngOnInit(): void { }
 
