@@ -15,6 +15,7 @@ export class CalculatorComponent implements OnInit {
   clipboard;
   value;
   operator: null;
+  isTyped: boolean;
   changedColor: boolean;
 
   constructor() { }
@@ -29,8 +30,6 @@ export class CalculatorComponent implements OnInit {
       this.operationClicked(button);
     } else if (button.value === '=') {
       this.resultClicked();
-    } else if (button.event === 'clear') {
-      this.clearAll();
     } else if (button.event === 'subtract') {
       this.subtractCurrentDigit();
     } else if (button.event === 'percent') {
@@ -77,6 +76,7 @@ export class CalculatorComponent implements OnInit {
           console.log('default switch');
       }
     }
+    this.isTyped = true
     this.value = buttonValue;
     this.resultLabel = this.value;
   }
@@ -98,8 +98,9 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  private clearAll() {
+  clearAll() {
     this.resultLabel = '0'
+    this.isTyped = false
     this.value = null;
     this.firstDigit = null;
     this.secondDigit = null;

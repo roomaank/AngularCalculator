@@ -1,11 +1,6 @@
 export const BUTTONS = [
     {
         type: 'string',
-        value: 'C',
-        event: 'clear'
-    },
-    {
-        type: 'string',
         value: '+/-',
         event: 'subtract'
     },

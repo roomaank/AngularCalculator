@@ -1,26 +1,23 @@
 <div class="container">
-  <button class="change-btn" 
-  [ngClass]="{
+  <button class="change-btn" [ngClass]="{
     'change-orange': !changedColor,
     'change-blue': changedColor
-  }" 
-  (click)="changeColor()">
+  }" (click)="changeColor()">
   </button>
   <div class="calc-wrapper" [class.calc-wrapper--changed]="changedColor">
     <div class="calc-header">
       <div class="calc-header--inner" [class.calc-header--changed]="changedColor">{{resultLabel}}</div>
     </div>
     <div class="calc-main">
-      <button class="button" *ngFor="let button of buttons" 
-      [ngClass]="{
+      <button class="button" *ngIf="isTyped" [class.button-changed]="changedColor" (click)="clearAll()">C</button>
+      <button class="button" *ngIf="!isTyped" [class.button-changed]="changedColor">AC</button>
+      <button class="button" *ngFor="let button of buttons" [ngClass]="{
         'button-changed': changedColor,
         'btn-operator': button.appointment === 'operator',
         'btn-equal': button.appointment === 'result',
         'btn-orange': changedColor && button.appointment === 'operator' || changedColor && button.appointment === 'result',
         'btn-equal--changed': changedColor && button.appointment === 'result'
-      }" 
-      (click)="clickOnButton(button)">{{button.value}}</button>
+      }" (click)="clickOnButton(button)">{{button.value}}</button>
     </div>
   </div>
 </div>
-
