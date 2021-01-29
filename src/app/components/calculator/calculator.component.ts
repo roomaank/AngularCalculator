@@ -106,40 +106,40 @@ export class CalculatorComponent implements OnInit {
     this.secondDigit = null;
     this.clipboard = null;
   }
-  
+
   private subtractCurrentDigit() {
+    // this.resultLabel = '-0'
     if (this.firstDigit) {
       this.firstDigit = this.firstDigit * (-1);
       this.resultLabel = this.firstDigit;
       if (this.operator) {
         console.log('!_!_!_!_!_!');
       }
-    } 
+    }
   }
-  
+
   private percentOfDigit() {
-    console.log('percent of digit');
-    if (this.firstDigit){
+    if (this.clipboard) {
+      const percentOfFirstDigit = this.firstDigit / 100;
+      const percentOfSecondDigit = this.secondDigit / 100;
+      const percentOfMultipliedDigits = ((percentOfFirstDigit * percentOfSecondDigit) * 100).toFixed(2); //Чи не норм практика юзати toFixed()?
+      this.resultLabel = percentOfMultipliedDigits;
+    } else if (this.firstDigit) {
       this.firstDigit = this.firstDigit / 100
       this.resultLabel = this.firstDigit
     }
   }
-  
-  private dotClicked(button){
+
+  private dotClicked(button) {
     const dot = button.value;
     console.log(dot);
-    // if (this.firstDigit){
-    //   this.firstDigit = this.firstDigit + dot;
-    //   console.log(this.firstDigit);
-    //   this.resultLabel = this.firstDigit;    
-    // }
   }
 
   private resultClicked() {
     this.resultLabel = this.clipboard;
   }
-  
-  changeColor(){
+
+  changeColor() {
     this.changedColor = !this.changedColor;
   }
 
