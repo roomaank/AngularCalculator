@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { TestComponent } from './components/test/test.component';
 
 const appRoutes: Routes = [
   { path: 'calculator', component: CalculatorComponent },
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CalculatorComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
