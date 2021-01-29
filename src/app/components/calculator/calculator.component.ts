@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { BUTTONS } from './calculator.constants';
 
 
+
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
@@ -18,16 +19,17 @@ export class CalculatorComponent implements OnInit {
   operator: null;
   isTyped: boolean;
   changedColor: boolean;
-
   
   constructor() { }
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    const keyCode = event.keyCode;
-    console.log(keyCode);
+    const button = this.buttons.find(btn => btn.value.toString() === event.key);
     
-
+    if (!button) {
+      return;
+    }
+    this.clickOnButton(button);
   }
 
   ngOnInit(): void { }
@@ -59,9 +61,7 @@ export class CalculatorComponent implements OnInit {
         case '+':
           if (this.operator) {
             this.secondDigit = buttonValue;
-            console.log('First Digit: ', this.firstDigit, this.operator, 'Second Digit: ', this.secondDigit);
             this.clipboard = this.firstDigit + this.secondDigit;
-            console.log('Clipboard: ', this.clipboard);
           }
           break;
         case '-':
@@ -104,7 +104,6 @@ export class CalculatorComponent implements OnInit {
 
     if (this.clipboard) {
       this.firstDigit = this.clipboard
-      console.log('!@#!@#!@#');
     }
   }
 
@@ -118,12 +117,10 @@ export class CalculatorComponent implements OnInit {
   }
 
   private subtractCurrentDigit() {
-    // this.resultLabel = '-0'
     if (this.firstDigit) {
       this.firstDigit = this.firstDigit * (-1);
       this.resultLabel = this.firstDigit;
       if (this.operator) {
-        console.log('!_!_!_!_!_!');
       }
     }
   }

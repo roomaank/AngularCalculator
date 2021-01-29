@@ -60,8 +60,5 @@ export class TestComponent implements OnInit {
     this.count = 1;
   }
 
-  clickDigits(){
-
-  }
 
 }
