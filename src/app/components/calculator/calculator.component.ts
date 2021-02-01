@@ -1,8 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { BUTTONS } from './calculator.constants';
 
-
-
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
@@ -17,6 +15,7 @@ export class CalculatorComponent implements OnInit {
   clipboard;
   value;
   operator: null;
+
   isTyped: boolean;
   changedColor: boolean;
   
@@ -33,7 +32,6 @@ export class CalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-
 
   clickOnButton(button) {
     if (button.type === 'number') {
@@ -107,13 +105,8 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  clearAll() {
-    this.resultLabel = '0'
-    this.isTyped = false
-    this.value = null;
-    this.firstDigit = null;
-    this.secondDigit = null;
-    this.clipboard = null;
+  private resultClicked() {
+    this.resultLabel = this.clipboard;
   }
 
   private subtractCurrentDigit() {
@@ -142,8 +135,13 @@ export class CalculatorComponent implements OnInit {
     console.log(dot);
   }
 
-  private resultClicked() {
-    this.resultLabel = this.clipboard;
+  clearAll() {
+    this.resultLabel = '0'
+    this.isTyped = false
+    this.value = null;
+    this.firstDigit = null;
+    this.secondDigit = null;
+    this.clipboard = null;
   }
 
   changeColor() {
