@@ -1,47 +1,26 @@
 <div class="container">
-  <div class="calc-wrapper">
+  <button class="change-btn" [ngClass]="{
+    'change-orange': !changedColor,
+    'change-blue': changedColor
+  }" (click)="changeColor()">
+  </button>
+  <div class="calc-wrapper" [class.calc-wrapper--changed]="changedColor">
     <div class="calc-header">
-      <div class="calc-header--top">
-        <div class="count-block">256 × 4</div>
-      </div>
-      <div class="calc-header--main">
-        <div class="result-block">1,024</div>
-      </div>
+      <div class="calc-header--inner" [class.calc-header--changed]="changedColor">{{resultLabel}}</div>
     </div>
     <div class="calc-main">
-      <div class="calc-main--left">
-        <div class="main-left--top">
-          <button class="button">C</button>
-          <button class="button">+/-</button>
-          <button class="button">%</button>
-        </div>
-        <div class="main-left--digits">
-          <button class="button">7</button>
-          <button class="button">8</button>
-          <button class="button">9</button>
-          <button class="button">4</button>
-          <button class="button">5</button>
-          <button class="button">6</button>
-          <button class="button">1</button>
-          <button class="button">2</button>
-          <button class="button">3</button>
-        </div>
-      </div>
-      <div class="calc-main--right">
-        <button class="button">÷</button>
-        <button class="button">×</button>
-        <button class="button">-</button>
-        <button class="button">+</button>
-      </div>
-    </div>
-    <div class="calc-bottom">
-      <div class="calc-bottom--left">
-        <button class="button">0</button>
-        <button class="button">.</button>
-      </div>
-      <div class="calc-bottom--right">
-        <button class="button btn-equal">=</button>
-      </div>
+      <button class="button" *ngIf="isTyped" [ngClass]="{'button-changed': changedColor, 'button-gray': changedColor}"
+        (click)="clearAll()">C</button>
+      <button class="button" *ngIf="!isTyped"
+        [ngClass]="{'button-changed': changedColor, 'button-gray': changedColor}">AC</button>
+      <button class="button" *ngFor="let button of buttons" [ngClass]="{
+        'button-gray': changedColor && button.changedColor === true,
+        'button-changed': changedColor,
+        'btn-operator': button.appointment === 'operator',
+        'btn-equal': button.appointment === 'result',
+        'btn-orange': changedColor && button.appointment === 'operator' || changedColor && button.appointment === 'result',
+        'btn-equal--changed': changedColor && button.appointment === 'result'
+      }" (click)="clickOnButton(button)">{{button.value}}</button>
     </div>
   </div>
 </div>
