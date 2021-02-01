@@ -57,28 +57,20 @@ export class CalculatorComponent implements OnInit {
     } else {
       switch (this.operator) {
         case '+':
-          if (this.operator) {
             this.secondDigit = buttonValue;
             this.clipboard = this.firstDigit + this.secondDigit;
-          }
           break;
         case '-':
-          if (this.operator) {
             this.secondDigit = buttonValue;
             this.clipboard = this.firstDigit - this.secondDigit;
-          }
           break;
         case '÷':
-          if (this.operator) {
             this.secondDigit = buttonValue
             this.clipboard = this.firstDigit / this.secondDigit;
-          }
           break;
         case '×':
-          if (this.operator) {
             this.secondDigit = buttonValue
             this.clipboard = this.firstDigit * this.secondDigit;
-          }
           break;
         default:
           console.log('default switch');
