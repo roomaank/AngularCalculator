@@ -121,8 +121,8 @@ export class CalculatorComponent implements OnInit {
       this.resultLabel = `Can't be divided by zero`
       return;
     }
-  } 
-  
+  }
+
   clearAll() {
     this.resultLabel = '0'
     this.value = null;
@@ -138,9 +138,8 @@ export class CalculatorComponent implements OnInit {
     if (this.firstDigit) {
       this.firstDigit = this.firstDigit * (-1);
       this.resultLabel = this.firstDigit;
-      if (this.operator) {
-      }
     }
+    // TODO insert - before zero
   }
 
   private percentOfDigit() {
@@ -152,6 +151,8 @@ export class CalculatorComponent implements OnInit {
     } else if (this.firstDigit) {
       this.firstDigit = this.firstDigit / 100
       this.resultLabel = this.firstDigit
+    } else if (this.secondDigit) {
+      console.log('insert - before current digit');
     }
   }
 
