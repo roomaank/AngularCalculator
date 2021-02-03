@@ -18,6 +18,7 @@ export class CalculatorComponent implements OnInit {
 
   isTyped: boolean;
   changedColor: boolean;
+  divideError: boolean;
   
   constructor() { }
 
@@ -54,22 +55,31 @@ export class CalculatorComponent implements OnInit {
 
     if (!this.operator) {
       this.firstDigit = buttonValue;
+      console.log(this.firstDigit);
     } else {
       switch (this.operator) {
         case '+':
             this.secondDigit = buttonValue;
+            console.log(this.secondDigit);
             this.clipboard = this.firstDigit + this.secondDigit;
           break;
         case '-':
             this.secondDigit = buttonValue;
+            console.log(this.secondDigit);
             this.clipboard = this.firstDigit - this.secondDigit;
           break;
         case '÷':
             this.secondDigit = buttonValue
+            console.log(this.secondDigit);
             this.clipboard = this.firstDigit / this.secondDigit;
+            if (this.secondDigit === 0){
+              console.log('error');
+              this.resultLabel = 'be divided by zero'
+            }
           break;
         case '×':
             this.secondDigit = buttonValue
+            console.log(this.secondDigit);
             this.clipboard = this.firstDigit * this.secondDigit;
           break;
         default:
@@ -83,7 +93,9 @@ export class CalculatorComponent implements OnInit {
 
   private operationClicked(button) {
     this.value = null
-    this.operator = button.value
+    const operator = button.value
+    this.operator = operator;
+    
     if (this.resultLabel === '') {
       return;
     }
@@ -95,10 +107,18 @@ export class CalculatorComponent implements OnInit {
     if (this.clipboard) {
       this.firstDigit = this.clipboard
     }
+
   }
 
   private resultClicked() {
     this.resultLabel = this.clipboard;
+    console.log(this.firstDigit);
+    console.log(this.secondDigit);
+    console.log(this.clipboard);
+    if (this.secondDigit === 0){
+      this.resultLabel = `Can't be divided by zero`
+      return;
+    }
   }
 
   private subtractCurrentDigit() {
@@ -128,12 +148,21 @@ export class CalculatorComponent implements OnInit {
   }
 
   clearAll() {
+    console.log('value', this.value);
+    console.log('firstDigit', this.firstDigit);
+    console.log('secondDigit', this.secondDigit);
+    console.log('clipboard', this.clipboard);
+    console.log('_____________________________');
     this.resultLabel = '0'
     this.isTyped = false
     this.value = null;
     this.firstDigit = null;
     this.secondDigit = null;
     this.clipboard = null;
+    console.log('value', this.value);
+    console.log('firstDigit', this.firstDigit);
+    console.log('secondDigit', this.secondDigit);
+    console.log('clipboard', this.clipboard);
   }
 
   changeColor() {
