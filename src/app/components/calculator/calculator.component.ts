@@ -19,13 +19,13 @@ export class CalculatorComponent implements OnInit {
   isTyped: boolean;
   changedColor: boolean;
   divideError: boolean;
-  
+
   constructor() { }
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     const button = this.buttons.find(btn => btn.value.toString() === event.key);
-    
+
     if (!button) {
       return;
     }
@@ -55,32 +55,33 @@ export class CalculatorComponent implements OnInit {
 
     if (!this.operator) {
       this.firstDigit = buttonValue;
-      console.log(this.firstDigit);
+      console.log('First Digit: ', this.firstDigit);
     } else {
       switch (this.operator) {
         case '+':
-            this.secondDigit = buttonValue;
-            console.log(this.secondDigit);
-            this.clipboard = this.firstDigit + this.secondDigit;
+          this.secondDigit = buttonValue;
+          console.log('Second digit: ', this.secondDigit);
+          this.clipboard = this.firstDigit + this.secondDigit;
           break;
         case '-':
-            this.secondDigit = buttonValue;
-            console.log(this.secondDigit);
-            this.clipboard = this.firstDigit - this.secondDigit;
+          this.secondDigit = buttonValue;
+          console.log('Second digit: ', this.secondDigit);
+          this.clipboard = this.firstDigit - this.secondDigit;
           break;
         case '÷':
-            this.secondDigit = buttonValue
-            console.log(this.secondDigit);
-            this.clipboard = this.firstDigit / this.secondDigit;
-            if (this.secondDigit === 0){
-              console.log('error');
-              this.resultLabel = 'be divided by zero'
-            }
+          this.secondDigit = buttonValue
+          console.log('Second digit: ', this.secondDigit);
+          this.clipboard = this.firstDigit / this.secondDigit;
+          if (this.secondDigit === 0) {
+            this.divideError = true;
+            this.resultLabel = `Can't be divided by zero`
+            return;
+          }
           break;
         case '×':
-            this.secondDigit = buttonValue
-            console.log(this.secondDigit);
-            this.clipboard = this.firstDigit * this.secondDigit;
+          this.secondDigit = buttonValue
+          console.log('Second digit: ', this.secondDigit);
+          this.clipboard = this.firstDigit * this.secondDigit;
           break;
         default:
           console.log('default switch');
@@ -95,7 +96,7 @@ export class CalculatorComponent implements OnInit {
     this.value = null
     const operator = button.value
     this.operator = operator;
-    
+
     if (this.resultLabel === '') {
       return;
     }
@@ -115,10 +116,22 @@ export class CalculatorComponent implements OnInit {
     console.log(this.firstDigit);
     console.log(this.secondDigit);
     console.log(this.clipboard);
-    if (this.secondDigit === 0){
+    if (this.secondDigit === 0) {
+      this.divideError = true
       this.resultLabel = `Can't be divided by zero`
       return;
     }
+  } 
+  
+  clearAll() {
+    this.resultLabel = '0'
+    this.value = null;
+    this.firstDigit = null;
+    this.secondDigit = null;
+    this.clipboard = null;
+    this.operator = null;
+    this.isTyped = false
+    this.divideError = false;
   }
 
   private subtractCurrentDigit() {
@@ -147,23 +160,6 @@ export class CalculatorComponent implements OnInit {
     console.log(dot);
   }
 
-  clearAll() {
-    console.log('value', this.value);
-    console.log('firstDigit', this.firstDigit);
-    console.log('secondDigit', this.secondDigit);
-    console.log('clipboard', this.clipboard);
-    console.log('_____________________________');
-    this.resultLabel = '0'
-    this.isTyped = false
-    this.value = null;
-    this.firstDigit = null;
-    this.secondDigit = null;
-    this.clipboard = null;
-    console.log('value', this.value);
-    console.log('firstDigit', this.firstDigit);
-    console.log('secondDigit', this.secondDigit);
-    console.log('clipboard', this.clipboard);
-  }
 
   changeColor() {
     this.changedColor = !this.changedColor;

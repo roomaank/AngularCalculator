@@ -46,6 +46,12 @@
     font-family: 'Rubik', sans-serif;
   }
 
+  &-header--error{
+    color: rgb(172, 0, 0);
+    font-size: 23px;
+    margin-bottom: 20px;
+  }
+
   &-main {
     height: 70%;
     flex-wrap: wrap;

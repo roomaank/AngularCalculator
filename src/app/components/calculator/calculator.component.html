@@ -6,7 +6,7 @@
   </button>
   <div class="calc-wrapper" [class.calc-wrapper--changed]="changedColor">
     <div class="calc-header">
-      <div class="calc-header--inner" [class.calc-header--changed]="changedColor">{{resultLabel}}</div>
+      <div class="calc-header--inner" [ngClass]="{'calc-header--changed': changedColor, 'calc-header--error': divideError}">{{resultLabel}}</div>
     </div>
     <div class="calc-main">
       <button class="button" *ngIf="isTyped" [ngClass]="{'button-changed': changedColor, 'button-gray': changedColor}"
