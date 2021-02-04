@@ -135,11 +135,13 @@ export class CalculatorComponent implements OnInit {
   }
 
   private subtractCurrentDigit() {
-    if (this.firstDigit) {
+    if (this.firstDigit && !this.operator) {
       this.firstDigit = this.firstDigit * (-1);
       this.resultLabel = this.firstDigit;
+    } else if (this.firstDigit && this.operator){
+      //TODO
     }
-    // TODO insert - before zero
+
   }
 
   private percentOfDigit() {
@@ -151,14 +153,15 @@ export class CalculatorComponent implements OnInit {
     } else if (this.firstDigit) {
       this.firstDigit = this.firstDigit / 100
       this.resultLabel = this.firstDigit
-    } else if (this.secondDigit) {
-      console.log('insert - before current digit');
     }
   }
 
   private dotClicked(button) {
     const dot = button.value;
     console.log(dot);
+    // if (this.firstDigit){
+    //   this.resultLabel += dot
+    // }
   }
 
 
